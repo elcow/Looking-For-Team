@@ -1,7 +1,47 @@
 Lft::Application.routes.draw do
-  get "home/index"
-  get "home/contact"
-  get "home/about"
+	#resources :view_user
+	
+	match '/view',				:to => 'view#index'
+	match '/view/user/:id', 	:to => 'view#user'
+	match '/view/project/:id', 	:to => 'view#project'
+	match '/view/team/:id', 	:to => 'view#team'
+	
+=begin
+	match '/account',			:to => 'account#edit'
+	match '/account/signup', 	:to => 'account#signup'
+	match '/account/login', 	:to => 'account#login'
+	match '/account/edit',		:to => 'account#edit'
+	match '/account/logout',	:to => 'account#logout'
+=end
+
+	match '/find',				:to => 'find#index'
+=begin
+	match '/find/people', 		:to => 'find#people'
+	match '/find/projects', 	:to => 'find#projects'
+	match '/find/teams', 		:to => 'find#teams'
+=end
+	
+	root 						:to => 'lft#index'
+	match '/index', 			:to => 'lft#index'
+	match '/contact', 			:to => 'lft#contact'
+	match '/about', 			:to => 'lft#about'
+	
+	
+	get 'lft/index'
+	get 'lft/contact'
+	get 'lft/about'
+	get 'lft/find'
+	get 'lft/signup'
+	
+	get 'find/people'
+	get 'find/projects'
+	get 'find/teams'
+	
+	get 'login/signup'
+	
+	get 'view/user'
+	get 'view/project'
+	get 'view/team'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +92,7 @@ Lft::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "home#index"
+  
 
   # See how all your routes lay out with "rake routes"
 
